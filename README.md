@@ -2,6 +2,8 @@
 This is an extension i made to modify / merge hypernetworks.
 It includes a standalone tab and a modified x / y plot script, to do some quick experiments.
 
+To install just paste https://github.com/ProtestNoodles/hypernetwork-modify into your Extensions>Install from URL tab
+
 ![example_gui](https://user-images.githubusercontent.com/122182506/211172161-2c6b8965-221a-4fbd-ac42-3e2f11919d5a.jpg)
 
 Here's an example of me merging two hypernetworks with changing merge ratios:
