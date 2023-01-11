@@ -119,7 +119,7 @@ def apply_hypernetwork(p, x, xs):
             if op == "(ad)":
                 hn_3 = x[2]
 
-        kwargs = {}
+        kwargs = {"save_file": False}
         o_dict = {"(ws)": "Weighted Sum", "(+)": "Add", "(-)": "Subtract", "(ad)": "Add Difference"}
         hn_1_opts_d = {"320": "hn_1_320", "640": "hn_1_640", "768": "hn_1_768", "1024": "hn_1024", "1280": "hn_1_1280"}
         hn_2_opts_d = {"320": "hn_2_320", "640": "hn_2_640", "768": "hn_2_768", "1024": "hn_2_1024",
@@ -153,6 +153,8 @@ def apply_hypernetwork(p, x, xs):
                         val = float(val)
                     if arg == "save":
                         kwargs["save_file"] = True
+                        if val != "auto":
+                            kwargs["custom_name"] = val
                     if arg in arg_dict:
                         kwargs[arg_dict[arg]] = val
                     else:
@@ -190,6 +192,8 @@ def apply_hypernetwork(p, x, xs):
                             val = float(val)
                         if arg == "save":
                             kwargs["save_file"] = True
+                            if val != "auto":
+                                kwargs["custom_name"] = val
                         if arg in arg_dict:
                             kwargs[arg_dict[arg]] = val
                         else:
@@ -213,6 +217,8 @@ def apply_hypernetwork(p, x, xs):
                             val = float(val)
                         if arg == "save":
                             kwargs["save_file"] = True
+                            if val != "auto":
+                                kwargs["custom_name"] = val
                         if arg in arg_dict:
                             kwargs[arg_dict[arg]] = val
                         else:
@@ -567,7 +573,8 @@ class Script(scripts.Script):
                 <br>The overall settings, to be used with {} curly brackets, are:
                 <br>wsr = Weighted Sum / Add Difference Ratio, af = Activation Function Strategy, mms = Missing Module Strategy,
                 <br>lts = Layer Structure/ Tensor Resize Strategy, str = Overall Strength of resulting network,
-                <br>save = Save the resulting network, default is false
+                <br>save = Save the resulting network under specified name, eg anime{save:anime2} will save the resulting network as anime2
+                <br>unless you enter auto, in that case the network will autogen the name
                 <br>multiple settings should be seperated by a semicolon ; since the comma , is already in use
                 <br>
                 <br>Hopefully this isn't too confusing <img style="display: inline; vertical-align: text-bottom;" src="file=extensions/hypernetwork-modify/res/llama-depress.gif"/>, 
